@@ -235,11 +235,11 @@ impl UiTemplate for GradientSlider {
             .world_mut()
             .get_resource_mut::<Assets<GradientRectMaterial>>()
             .unwrap();
-        let gradient_material = gradient_material_assets.add(GradientRectMaterial {
+        let gradient_material = UiMaterialHandle(gradient_material_assets.add(GradientRectMaterial {
             color_stops: [Srgba::default().to_vec4(); 8],
             num_color_stops: IVec4::new(2, 0, 0, 0),
             cap_size: THUMB_WIDTH * 0.5,
-        });
+        }));
 
         // Effect to update the material handle.
         builder.create_effect({

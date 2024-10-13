@@ -125,7 +125,7 @@ fn setup_view_root(world: &mut World) {
 
             builder.text("Text");
             builder
-                .spawn((TextBlock::default(), Text::default()))
+                .spawn((TextLayout::default(), Text::default()))
                 .styles((typography::text_default, |sb: &mut StyleBuilder| {
                     sb.font_size(32).color(palettes::css::GRAY);
                 }))

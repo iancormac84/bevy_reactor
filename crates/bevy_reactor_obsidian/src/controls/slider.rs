@@ -205,12 +205,12 @@ impl UiTemplate for Slider {
             .world_mut()
             .get_resource_mut::<Assets<SliderRectMaterial>>()
             .unwrap();
-        let material = ui_materials.add(SliderRectMaterial {
+        let material = UiMaterialHandle(ui_materials.add(SliderRectMaterial {
             color_lo: LinearRgba::from(colors::U1).to_vec4(),
             color_hi: LinearRgba::from(colors::U3).to_vec4(),
             value: Vec4::new(0.5, 0., 0., 0.),
             radius: RoundedCorners::All.to_vec(4.),
-        });
+        }));
         let material_id = material.id();
 
         // Effect to update the material with the slider position.
