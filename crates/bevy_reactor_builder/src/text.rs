@@ -17,7 +17,7 @@ impl<'w> TextBuilder for WorldChildBuilder<'w> {
     fn text(&mut self, s: impl Into<String>) -> &mut Self {
         self.spawn((
             Name::new("TextStatic"),
-            TextBlock::default(),
+            TextLayout::default(),
             Text(s.into()),
             TextStyle::default(),
             UseInheritedTextStyles,
@@ -42,7 +42,7 @@ impl<'w> TextBuilder for WorldChildBuilder<'w> {
         node.insert((
             tracking,
             Name::new("TextComputed"),
-            TextBlock::default(),
+            TextLayout::default(),
             Text(text),
             TextStyle::default(),
             UseInheritedTextStyles,
@@ -57,7 +57,7 @@ impl<'w> TextBuilder for UiBuilder<'w> {
     fn text(&mut self, s: impl Into<String>) -> &mut Self {
         self.spawn((
             Name::new("TextStatic"),
-            TextBlock::default(),
+            TextLayout::default(),
             Text(s.into()),
             TextStyle::default(),
             UseInheritedTextStyles,
@@ -82,7 +82,7 @@ impl<'w> TextBuilder for UiBuilder<'w> {
         node.insert((
             tracking,
             Name::new("TextComputed"),
-            TextBlock::default(),
+            TextLayout::default(),
             Text(text),
             TextStyle::default(),
             UseInheritedTextStyles,

@@ -14,7 +14,7 @@ exclude = [
 ]
 
 [workspace.dependencies]
-bevy = "0.15.0-dev"
+bevy = { git = "https://github.com/bevyengine/bevy.git" }
 bevy_reactor_builder = { path = "crates/bevy_reactor_builder" }
 bevy_reactor_obsidian = { path = "crates/bevy_reactor_obsidian" }
 bevy_reactor_signals = { path = "crates/bevy_reactor_signals" }
@@ -41,7 +41,3 @@ bevy_reactor_inspect = { workspace = true }
 # bevy_reactor_overlays = { path = "crates/bevy_reactor_overlays" }
 # bevy_picking_backdrop = { path = "crates/bevy_picking_backdrop" }
 bevy-inspector-egui = "0.26.0"
-
-[patch.crates-io]
-bevy = { git = "https://github.com/bevyengine/bevy.git", version = "0.15.0-dev" }
-bevy_ecs = { git = "https://github.com/bevyengine/bevy.git", version = "0.15.0-dev" }
