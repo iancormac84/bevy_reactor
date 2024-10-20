@@ -93,7 +93,7 @@ impl UiTemplate for ToolPalette {
         let columns = self.columns;
 
         builder
-            .spawn((NodeBundle::default(), Name::new("ToolPalette")))
+            .spawn((Node::default(), Name::new("ToolPalette")))
             .styles((
                 style_tool_palette,
                 move |ss: &mut StyleBuilder| {

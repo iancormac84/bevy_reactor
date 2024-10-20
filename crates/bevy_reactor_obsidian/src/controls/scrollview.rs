@@ -168,13 +168,13 @@ impl UiTemplate for ScrollView {
             e.insert(Name::new("ScrollView"));
             e
         } else {
-            builder.spawn((NodeBundle::default(), Name::new("ScrollView")))
+            builder.spawn((Node::default(), Name::new("ScrollView")))
         }
         .styles((style_scroll_view, self.style.clone()))
         .create_children(|builder| {
             // Scroll area
             let id_scroll_area = builder
-                .spawn((NodeBundle::default(), Name::new("ScrollView::ScrollArea")))
+                .spawn((Node::default(), Name::new("ScrollView::ScrollArea")))
                 .id();
 
             // Horizontal scroll bar
@@ -218,7 +218,7 @@ impl UiTemplate for ScrollView {
                 )
                 .create_children(|builder| {
                     builder
-                        .spawn((NodeBundle::default(), Name::new("ScrollView::ScrollRegion")))
+                        .spawn((Node::default(), Name::new("ScrollView::ScrollRegion")))
                         .insert(ScrollContent)
                         .styles((style_scroll_content, self.content_style.clone()))
                         .create_children(|builder| {
@@ -236,7 +236,7 @@ fn build_scrollbar(
     vertical: bool,
 ) -> Entity {
     let scrollbar_id = builder
-        .spawn((NodeBundle::default(), Name::new("Scrollbar")))
+        .spawn((Node::default(), Name::new("Scrollbar")))
         .id();
 
     builder
@@ -255,7 +255,7 @@ fn build_scrollbar(
             // Click outside of thumb
             move |mut trigger: Trigger<Pointer<Click>>,
                   mut world: DeferredWorld,
-                  q_thumb: Query<(&Node, &GlobalTransform)>| {
+                  q_thumb: Query<(&ComputedNode, &GlobalTransform)>| {
                 trigger.propagate(false);
                 let id_scrollbar = trigger.entity();
                 let Some(children) = world.get::<Children>(id_scrollbar) else {
@@ -282,7 +282,7 @@ fn build_scrollbar(
         )
         .create_children(|builder| {
             builder
-                .spawn((NodeBundle::default(), Name::new("Scrollbar::Thumb")))
+                .spawn((Node::default(), Name::new("Scrollbar::Thumb")))
                 .style(if vertical {
                     style_scrollbar_y_thumb
                 } else {

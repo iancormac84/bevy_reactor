@@ -226,7 +226,7 @@ impl UiTemplate for Button {
         let size = self.size;
         let on_click = self.on_click;
 
-        let button = builder.spawn((NodeBundle::default(), Name::new("Button")));
+        let button = builder.spawn((Node::default(), Name::new("Button")));
         let button_id = button.id();
         let hovering = builder.create_hover_signal(button_id);
         let focused = builder.create_focus_visible_signal(button_id);
@@ -258,7 +258,7 @@ impl UiTemplate for Button {
             .insert_if(self.autofocus, || AutoFocus)
             .create_children(|builder| {
                 builder
-                    .spawn((NodeBundle::default(), Name::new("Button::Background")))
+                    .spawn((Node::default(), Name::new("Button::Background")))
                     .style(style_button_bg)
                     .insert(corners.to_border_radius(self.size.border_radius()))
                     .style_dyn(

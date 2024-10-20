@@ -12,6 +12,6 @@ pub struct Spacer;
 
 impl UiTemplate for Spacer {
     fn build(&self, builder: &mut UiBuilder) {
-        builder.spawn(NodeBundle::default()).style(style_spacer);
+        builder.spawn(Node::default()).style(style_spacer);
     }
 }

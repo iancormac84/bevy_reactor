@@ -174,7 +174,7 @@ impl UiTemplate for Slider {
     fn build(&self, builder: &mut UiBuilder) {
         let slider_id = builder
             .spawn((
-                MaterialNodeBundle::<SliderRectMaterial>::default(),
+                MaterialNode::<SliderRectMaterial>::default(),
                 Name::new("Slider"),
             ))
             .id();
@@ -224,7 +224,7 @@ impl UiTemplate for Slider {
         builder
             .entity_mut(slider_id)
             .styles((typography::text_default, style_slider, self.style.clone()))
-            .insert(UiMaterialHandle(material.clone()))
+            .insert(MaterialNode::<SliderRectMaterial>(material.clone()))
             .effect(move |rcx| {
                 CoreSlider::new(value.get(rcx), min.get(rcx), max.get(rcx))
             }, |slider, ent| {
@@ -264,7 +264,7 @@ impl UiTemplate for Slider {
                     }
                 });
                 builder
-                    .spawn((NodeBundle::default(), Name::new("Slider::Overlay")))
+                    .spawn((Node::default(), Name::new("Slider::Overlay")))
                     .style(style_overlay)
                     .create_children(move |builder| {
                         builder.cond(
@@ -283,7 +283,7 @@ impl UiTemplate for Slider {
                             |_| {},
                         );
                         builder
-                            .spawn(NodeBundle::default())
+                            .spawn(Node::default())
                             .style(style_label)
                             .create_children(|builder| {
                                 if let Some(label) = label {

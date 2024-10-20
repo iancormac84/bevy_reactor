@@ -13,13 +13,13 @@ use bevy::{
 /// such as `Style` are cached in the builder and not applied until `finish` is called.
 pub struct StyleBuilder<'a, 'w> {
     pub target: &'a mut EntityWorldMut<'w>,
-    pub(crate) style: ui::Style,
+    pub(crate) style: ui::Node,
     pub(crate) style_changed: bool,
 }
 
 impl<'a, 'w> StyleBuilder<'a, 'w> {
     /// Construct a new StyleBuilder instance.
-    pub fn new(target: &'a mut EntityWorldMut<'w>, style: ui::Style) -> Self {
+    pub fn new(target: &'a mut EntityWorldMut<'w>, style: ui::Node) -> Self {
         Self {
             target,
             style,

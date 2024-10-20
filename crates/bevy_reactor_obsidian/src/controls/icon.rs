@@ -67,7 +67,7 @@ impl UiTemplate for Icon {
         let color = self.color;
 
         builder
-            .spawn(NodeBundle { ..default() })
+            .spawn(Node::default())
             .styles((
                 move |sb: &mut StyleBuilder| {
                     sb.width(size.x).height(size.y).background_image(&icon);

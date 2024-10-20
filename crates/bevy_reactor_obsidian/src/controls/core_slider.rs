@@ -65,7 +65,7 @@ pub(crate) fn slider_on_drag_start(
 
 pub(crate) fn slider_on_drag(
     mut trigger: Trigger<Pointer<Drag>>,
-    mut q_state: Query<(&Node, &CoreSlider, &mut DragState)>,
+    mut q_state: Query<(&ComputedNode, &CoreSlider, &mut DragState)>,
     mut commands: Commands,
 ) {
     if let Ok((node, slider, drag)) = q_state.get_mut(trigger.entity()) {

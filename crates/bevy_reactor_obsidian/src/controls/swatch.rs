@@ -107,10 +107,7 @@ impl UiTemplate for Swatch {
         });
 
         builder
-            .spawn((MaterialNodeBundle::<SwatchRectMaterial> {
-                material: UiMaterialHandle(material.clone()),
-                ..default()
-            }, Name::new("Swatch")))
+            .spawn((MaterialNode::<SwatchRectMaterial>(material.clone()), Name::new("Swatch")))
             .styles((style_swatch, self.style.clone()))
             .observe(
                 move |mut trigger: Trigger<Pointer<Click>>,
@@ -126,7 +123,7 @@ impl UiTemplate for Swatch {
             .create_children(|builder| {
                 builder.cond(
                     selected,
-                    |builder| { builder.spawn(NodeBundle::default()).style(style_selection);},
+                    |builder| { builder.spawn(Node::default()).style(style_selection);},
                     |_builder| {},
                 );
             })

@@ -53,7 +53,7 @@ fn setup_view_root(world: &mut World) {
     let camera = world.spawn((Camera::default(), Camera2d)).id();
 
     world
-        .spawn(NodeBundle::default())
+        .spawn(Node::default())
         .insert((TargetCamera(camera), TabGroup::default(), DefaultKeyHandler))
         .observe(handle_tab_navigation)
         .style(style_test)
@@ -73,7 +73,7 @@ fn setup_view_root(world: &mut World) {
             let dummy_text = "The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz.";
 
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .style(style_panel)
                 .style_dyn(
                     |rcx| rcx.read_resource::<LeftPanelWidth>().0,
@@ -98,7 +98,7 @@ fn setup_view_root(world: &mut World) {
             builder.invoke(Splitter::new().value(left_width).on_change(on_resize_left));
 
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .style(style_panel)
                 .style(|sb| {
                     sb.flex_grow(1.);
@@ -115,7 +115,7 @@ fn setup_view_root(world: &mut World) {
             );
 
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .style(style_panel)
                 .style_dyn(
                     |rcx| rcx.read_resource::<RightPanelWidth>().0,

@@ -179,12 +179,12 @@ impl Default for SpinBox {
 impl UiTemplate for SpinBox {
     fn build(&self, builder: &mut UiBuilder) {
         let spinbox_id = builder
-            .spawn((NodeBundle::default(), Name::new("Spinbox")))
+            .spawn((Node::default(), Name::new("Spinbox")))
             .id();
         let drag_state = builder.create_mutable::<DragState>(DragState::default());
         let show_buttons = builder.create_derived(move |rcx| {
             // Show buttons when spinbox is wide enough.
-            let node = rcx.read_component::<Node>(spinbox_id).unwrap();
+            let node = rcx.read_component::<ComputedNode>(spinbox_id).unwrap();
             node.size().x >= 48.
         });
 
@@ -237,7 +237,7 @@ impl UiTemplate for SpinBox {
                 );
 
                 builder
-                    .spawn((NodeBundle::default(), Name::new("SpinBox::Label")))
+                    .spawn((Node::default(), Name::new("SpinBox::Label")))
                     .styles((typography::text_default, style_spinbox_label))
                     .observe(
                         move |mut trigger: Trigger<Pointer<DragStart>>,

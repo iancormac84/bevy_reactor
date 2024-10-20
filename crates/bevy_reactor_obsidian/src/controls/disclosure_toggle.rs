@@ -113,7 +113,7 @@ impl UiTemplate for DisclosureToggle {
         let disabled = self.disabled;
         let checked = self.expanded;
         let id = builder
-            .spawn((NodeBundle::default(), Name::new("DisclosureToggle")))
+            .spawn((Node::default(), Name::new("DisclosureToggle")))
             .id();
         let hovering = builder.create_hover_signal(id);
         let focused = builder.create_focus_visible_signal(id);

@@ -48,13 +48,13 @@ fn setup_view_root(world: &mut World) {
     let camera = world.spawn((Camera::default(), Camera2d)).id();
 
     world
-        .spawn(NodeBundle::default())
+        .spawn(Node::default())
         .insert((TargetCamera(camera), TabGroup::default(), DefaultKeyHandler))
         .observe(handle_tab_navigation)
         .style(style_test)
         .create_children(|builder| {
             builder.text("bistable_transition");
-            let row = builder.spawn(NodeBundle::default());
+            let row = builder.spawn(Node::default());
             let row_id = row.id();
             let is_hover = builder.create_hover_signal(row_id);
             let transition_state = builder.create_bistable_transition(is_hover, 0.3);
@@ -75,7 +75,7 @@ fn setup_view_root(world: &mut World) {
 
             builder.text("DisclosureToggle");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .create_children(|builder| {
                     let expanded = builder.create_mutable(false);
                     let on_change = builder.create_callback(
@@ -92,7 +92,7 @@ fn setup_view_root(world: &mut World) {
 
             builder.text("Dialog");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .create_children(|builder| {
                     let open = builder.create_mutable(false);
                     let on_open =

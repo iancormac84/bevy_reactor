@@ -52,14 +52,14 @@ fn setup_view_root(world: &mut World) {
     let camera = world.spawn((Camera::default(), Camera2d)).id();
 
     world
-        .spawn(NodeBundle::default())
+        .spawn(Node::default())
         .insert((TargetCamera(camera), TabGroup::default(), DefaultKeyHandler))
         .observe(handle_tab_navigation)
         .style(style_test)
         .create_children(|builder| {
             builder.text("Swatch");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .style(style_row)
                 .create_children(|builder| {
                     builder
@@ -72,7 +72,7 @@ fn setup_view_root(world: &mut World) {
 
             builder.text("SwatchGrid");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .style(style_row)
                 .create_children(|builder| {
                     let selected = builder.create_mutable::<Srgba>(palettes::css::BLUE);
@@ -96,7 +96,7 @@ fn setup_view_root(world: &mut World) {
 
             builder.text("Checkbox");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .style(style_column)
                 .create_children(|builder| {
                     let checked_1 = builder.create_mutable(true);
@@ -141,7 +141,7 @@ fn setup_view_root(world: &mut World) {
                 });
             builder.text("Slider");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .styles((style_column, |sb: &mut StyleBuilder| {
                     sb.align_items(ui::AlignItems::Stretch);
                 }))
@@ -172,7 +172,7 @@ fn setup_view_root(world: &mut World) {
 
             builder.text("GradientSlider");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .styles((style_column, |sb: &mut StyleBuilder| {
                     sb.align_items(ui::AlignItems::Stretch);
                 }))
@@ -203,7 +203,7 @@ fn setup_view_root(world: &mut World) {
 
             builder.text("SpinBox");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .styles((style_column, |sb: &mut StyleBuilder| {
                     sb.align_items(ui::AlignItems::Stretch);
                 }))
@@ -225,7 +225,7 @@ fn setup_view_root(world: &mut World) {
 
             builder.text("DisclosureToggle");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .create_children(|builder| {
                     let expanded = builder.create_mutable(false);
                     let on_change = builder.create_callback(

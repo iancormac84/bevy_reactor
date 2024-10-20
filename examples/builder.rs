@@ -40,7 +40,7 @@ const X_EXTENT: f32 = 14.5;
 
 fn setup_view_root(world: &mut World) {
     world
-        .spawn(NodeBundle { ..default() })
+        .spawn(Node::default())
         .styles(style_test)
         .style_dyn(
             |rcx| {
@@ -97,7 +97,7 @@ impl UiTemplate for Clickable {
     fn build(&self, builder: &mut UiBuilder) {
         let on_click = self.on_click;
         builder
-            .spawn(NodeBundle::default())
+            .spawn(Node::default())
             .observe(
                 move |_event: Trigger<Pointer<Click>>, mut commands: Commands| {
                     commands.run_callback(on_click, ());

@@ -37,7 +37,7 @@ fn setup_view_root(world: &mut World) {
     let camera = world.spawn((Camera::default(), Camera2d)).id();
 
     world
-        .spawn(NodeBundle::default())
+        .spawn(Node::default())
         .style(style_test)
         .insert(TargetCamera(camera))
         .insert(BorderColor(palettes::css::LIME.into()))

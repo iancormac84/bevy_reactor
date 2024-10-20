@@ -3,7 +3,7 @@ use bevy::{
     ecs::{observer::ObserverState, system::SystemIdMarker, world::DeferredWorld},
     pbr::{DirectionalLight, PointLight},
     prelude::{
-        Camera2d, Camera3d, Children, Click, Component, Entity, In, Mesh3d, NodeBundle, Parent,
+        Camera2d, Camera3d, Children, Click, Component, Entity, In, Mesh3d, Parent,
         Pointer, Query, ResMut, Resource, Trigger, Without, World,
     },
     ui::{self, experimental::GhostNode, Node},
@@ -45,7 +45,7 @@ fn style_panel(sb: &mut StyleBuilder) {
 pub(crate) fn create_inspector_panel(world: &mut World) {
     world
         .spawn((
-            NodeBundle::default(),
+            Node::default(),
             Name::new("InspectorPanel"),
             InspectorPanelRoot,
         ))
@@ -143,7 +143,7 @@ impl UiTemplate for EntityTreeNode {
             return;
         }
         builder
-            .spawn((NodeBundle::default(), Name::new("EntityTreeNode")))
+            .spawn((Node::default(), Name::new("EntityTreeNode")))
             .style(style_tree_node)
             .create_children(|builder| {
                 let entid = self.0;
@@ -153,7 +153,7 @@ impl UiTemplate for EntityTreeNode {
                         expanded.set(&mut world, *value);
                     });
                 builder
-                    .spawn(NodeBundle::default())
+                    .spawn(Node::default())
                     .style(style_tree_node_label)
                     .observe(
                         move |mut trigger: Trigger<Pointer<Click>>, mut world: DeferredWorld| {
@@ -216,7 +216,7 @@ impl UiTemplate for EntityTreeNode {
                     expanded.signal(),
                     move |builder| {
                         builder
-                            .spawn(NodeBundle::default())
+                            .spawn(Node::default())
                             .style(style_tree_node_children)
                             .create_children(|builder| {
                                 let component_names: Vec<String> = builder

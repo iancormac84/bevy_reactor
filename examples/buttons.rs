@@ -57,14 +57,14 @@ fn setup_view_root(world: &mut World) {
     let camera = world.spawn((Camera::default(), Camera2d)).id();
 
     world
-        .spawn(NodeBundle::default())
+        .spawn(Node::default())
         .insert((TargetCamera(camera), TabGroup::default(), DefaultKeyHandler))
         .observe(handle_tab_navigation)
         .style(style_test)
         .create_children(|builder| {
             builder.text("Variants");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .style(style_row)
                 .create_children(|builder| {
                     builder
@@ -90,7 +90,7 @@ fn setup_view_root(world: &mut World) {
                 });
             builder.text("Variants (disabled)");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .style(style_row)
                 .create_children(|builder| {
                     builder
@@ -122,7 +122,7 @@ fn setup_view_root(world: &mut World) {
                 });
             builder.text("Size");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .style(style_row)
                 .create_children(|builder| {
                     builder
@@ -136,7 +136,7 @@ fn setup_view_root(world: &mut World) {
                 });
             builder.text("Corners");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .style(style_row)
                 .create_children(|builder| {
                     builder
@@ -173,7 +173,7 @@ fn setup_view_root(world: &mut World) {
                 });
             builder.text("IconButton");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .style(style_row)
                 .create_children(|builder| {
                     builder
@@ -184,7 +184,7 @@ fn setup_view_root(world: &mut World) {
                 });
             builder.text("IconButton Size");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .style(style_row)
                 .create_children(|builder| {
                     builder
@@ -213,7 +213,7 @@ fn setup_view_root(world: &mut World) {
                 });
             builder.text("ToolPalette");
             builder
-                .spawn(NodeBundle::default())
+                .spawn(Node::default())
                 .style(style_row)
                 .create_children(|builder| {
                     builder.invoke(ToolPalette::new().columns(3).children(|builder| {

@@ -45,7 +45,7 @@ fn setup_view_root(world: &mut World) {
     let camera = world.spawn((Camera::default(), Camera2d)).id();
 
     world
-        .spawn(NodeBundle::default())
+        .spawn(Node::default())
         .insert((TargetCamera(camera), TabGroup::default(), DefaultKeyHandler))
         .observe(handle_tab_navigation)
         .style(style_test)

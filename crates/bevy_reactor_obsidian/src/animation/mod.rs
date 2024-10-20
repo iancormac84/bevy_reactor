@@ -3,7 +3,7 @@ use bevy::{
     color::{Mix, Srgba},
     ecs::component::Component,
     math::{cubic_splines::CubicSegment, Vec2},
-    ui::{self, BackgroundColor, BorderColor, Style},
+    ui::{self, BackgroundColor, BorderColor},
 };
 
 mod bistable_transition;
@@ -65,7 +65,7 @@ impl AnimatableProperty for AnimatedBorderColor {
 pub struct AnimatedPxWidth;
 impl AnimatableProperty for AnimatedPxWidth {
     type ValueType = f32;
-    type ComponentType = Style;
+    type ComponentType = Node;
 
     fn current(component: &Self::ComponentType) -> Self::ValueType {
         if let ui::Val::Px(value) = component.width {
@@ -84,7 +84,7 @@ impl AnimatableProperty for AnimatedPxWidth {
 pub struct AnimatedPxHeight;
 impl AnimatableProperty for AnimatedPxHeight {
     type ValueType = f32;
-    type ComponentType = Style;
+    type ComponentType = Node;
 
     fn current(component: &Self::ComponentType) -> Self::ValueType {
         if let ui::Val::Px(value) = component.height {

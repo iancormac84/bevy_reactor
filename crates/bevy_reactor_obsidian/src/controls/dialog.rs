@@ -157,7 +157,7 @@ impl UiTemplate for Dialog {
                 let children = children.clone();
                 // Portal::new(
                 builder
-                    .spawn((NodeBundle::default(), Name::new("Dialog::Overlay")))
+                    .spawn((Node::default(), Name::new("Dialog::Overlay")))
                     .style(style_dialog_barrier)
                     .insert(Barrier { on_close })
                     .effect(
@@ -181,7 +181,7 @@ impl UiTemplate for Dialog {
                     )
                     .create_children(|builder| {
                         builder
-                            .spawn((NodeBundle::default(), Name::new("Dialog")))
+                            .spawn((Node::default(), Name::new("Dialog")))
                             .insert(TabGroup {
                                 order: 0,
                                 modal: true,
@@ -266,7 +266,7 @@ impl DialogHeader {
 impl UiTemplate for DialogHeader {
     fn build(&self, builder: &mut bevy_reactor_builder::UiBuilder) {
         builder
-            .spawn(NodeBundle::default())
+            .spawn(Node::default())
             .style(style_dialog_header)
             .create_children(|builder| {
                 (self.children.as_ref())(builder);
@@ -314,7 +314,7 @@ impl DialogBody {
 impl UiTemplate for DialogBody {
     fn build(&self, builder: &mut bevy_reactor_builder::UiBuilder) {
         builder
-            .spawn(NodeBundle::default())
+            .spawn(Node::default())
             .style(style_dialog_body)
             .create_children(|builder| {
                 (self.children.as_ref())(builder);
@@ -364,7 +364,7 @@ impl DialogFooter {
 impl UiTemplate for DialogFooter {
     fn build(&self, builder: &mut bevy_reactor_builder::UiBuilder) {
         builder
-            .spawn(NodeBundle::default())
+            .spawn(Node::default())
             .style(style_dialog_footer)
             .create_children(|builder| {
                 (self.children.as_ref())(builder);

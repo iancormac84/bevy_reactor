@@ -147,7 +147,7 @@ impl UiTemplate for Checkbox {
     /// Construct a checkbox widget.
     fn build(&self, builder: &mut UiBuilder) {
         let id = builder
-            .spawn((NodeBundle::default(), Name::new("Checkbox")))
+            .spawn((Node::default(), Name::new("Checkbox")))
             .id();
         let hovering = builder.create_hover_signal(id);
         let focused = builder.create_focus_visible_signal(id);
@@ -170,7 +170,7 @@ impl UiTemplate for Checkbox {
             .insert_if(self.disabled, || Disabled)
             .create_children(|builder| {
                 builder
-                    .spawn((NodeBundle::default(), Name::new("Checkbox::Border")))
+                    .spawn((Node::default(), Name::new("Checkbox::Border")))
                     .style(style_checkbox_border)
                     .style_dyn(
                         move |rcx| {
@@ -207,7 +207,7 @@ impl UiTemplate for Checkbox {
                             checked,
                             move |builder| {
                                 builder
-                                    .spawn(NodeBundle::default())
+                                    .spawn(Node::default())
                                     .style(style_checkbox_inner);
                             },
                             |_| {},
@@ -215,7 +215,7 @@ impl UiTemplate for Checkbox {
                     });
 
                 builder
-                    .spawn(NodeBundle::default())
+                    .spawn(Node::default())
                     .styles((typography::text_default, style_checkbox_label))
                     .style_dyn(
                         move |rcx| disabled.get(rcx),

@@ -21,8 +21,8 @@ pub trait EntityStyleBuilder {
 
 impl<'w> EntityStyleBuilder for EntityWorldMut<'w> {
     fn style<S: FnOnce(&mut StyleBuilder)>(&mut self, style_fn: S) -> &mut Self {
-        let mut style = ui::Style::default();
-        if let Some(s) = self.get::<ui::Style>() {
+        let mut style = ui::Node::default();
+        if let Some(s) = self.get::<ui::Node>() {
             style.clone_from(s);
         }
         let mut sb = StyleBuilder::new(self, style);
@@ -32,8 +32,8 @@ impl<'w> EntityStyleBuilder for EntityWorldMut<'w> {
     }
 
     fn styles(&mut self, styles: impl StyleTuple) -> &mut Self {
-        let mut style = ui::Style::default();
-        if let Some(s) = self.get::<ui::Style>() {
+        let mut style = ui::Node::default();
+        if let Some(s) = self.get::<ui::Node>() {
             style.clone_from(s);
         }
         let mut sb = StyleBuilder::new(self, style);
@@ -89,8 +89,8 @@ impl<
         let val = (self.deps_fn)(&rcx);
 
         let mut target = world.entity_mut(self.target);
-        let mut style = ui::Style::default();
-        if let Some(s) = target.get::<ui::Style>() {
+        let mut style = ui::Node::default();
+        if let Some(s) = target.get::<ui::Node>() {
             style.clone_from(s);
         }
         let mut sb = StyleBuilder::new(&mut target, style);

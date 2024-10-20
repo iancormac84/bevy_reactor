@@ -201,7 +201,7 @@ impl Default for GradientSlider {
 impl UiTemplate for GradientSlider {
     fn build(&self, builder: &mut UiBuilder) {
         let slider_id = builder
-            .spawn((NodeBundle::default(), Name::new("GradientSlider")))
+            .spawn((Node::default(), Name::new("GradientSlider")))
             .id();
 
         // Pain point: Need to capture all props for closures.
@@ -284,7 +284,7 @@ impl UiTemplate for GradientSlider {
                     let max = max.get(&world);
                     let hit_x = trigger.event().pointer_location.position.x;
                     let ent = world.entity(slider_id);
-                    let node = ent.get::<Node>();
+                    let node = ent.get::<ComputedNode>();
                     let transform = ent.get::<GlobalTransform>();
                     if let (Some(node), Some(transform)) = (node, transform) {
                         // If not clicking on thumb, then snap thumb to new location.
@@ -306,15 +306,14 @@ impl UiTemplate for GradientSlider {
             )
             .create_children(|builder| {
                 builder
-                    .spawn(MaterialNodeBundle::<GradientRectMaterial>::default())
-                    .insert(UiMaterialHandle(gradient_material.clone()))
+                    .spawn(MaterialNode::<GradientRectMaterial>(gradient_material.clone()))
                     .style(style_gradient);
                 builder
-                    .spawn((NodeBundle::default(), Name::new("GradientSlider::Track")))
+                    .spawn((Node::default(), Name::new("GradientSlider::Track")))
                     .style(style_track)
                     .create_children(|builder| {
                         builder
-                            .spawn((NodeBundle::default(), Name::new("GradientSlider::Thumb")))
+                            .spawn((Node::default(), Name::new("GradientSlider::Thumb")))
                             .style(style_thumb)
                             .style_dyn(
                                 move |rcx| {

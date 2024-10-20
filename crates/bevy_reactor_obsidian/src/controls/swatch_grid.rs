@@ -115,7 +115,7 @@ impl UiTemplate for SwatchGrid {
         });
 
         builder
-            .spawn((NodeBundle::default(), Name::new("SwatchGrid")))
+            .spawn((Node::default(), Name::new("SwatchGrid")))
             .styles((
                 style_swatch_grid,
                 move |ss: &mut StyleBuilder| {
@@ -152,7 +152,7 @@ impl UiTemplate for SwatchGrid {
                             );
                         }
                         None => {
-                            builder.spawn(NodeBundle::default()).style(style_empty_slot);
+                            builder.spawn(Node::default()).style(style_empty_slot);
                         }
                     },
                     |_| {},
