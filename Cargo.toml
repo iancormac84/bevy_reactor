@@ -14,12 +14,12 @@ exclude = [
 ]
 
 [workspace.dependencies]
-bevy = { version = "0.15.0-dev", features = ["ghost_nodes"] }
+bevy = { version = "0.15", features = ["ghost_nodes"] }
 bevy_reactor_builder = { path = "crates/bevy_reactor_builder" }
 bevy_reactor_obsidian = { path = "crates/bevy_reactor_obsidian" }
 bevy_reactor_signals = { path = "crates/bevy_reactor_signals" }
 bevy_reactor_inspect = { path = "crates/bevy_reactor_inspect" }
-bevy_mod_picking = "0.20.1"
+# bevy_mod_picking = "0.20.1"
 bevy_mod_stylebuilder = { path = "crates/bevy_mod_stylebuilder" }
 
 [dependencies]
@@ -27,7 +27,7 @@ bevy = { workspace = true }
 bevy_reactor_signals = { workspace = true }
 bevy_reactor_builder = { workspace = true }
 bevy_mod_stylebuilder = { workspace = true }
-bevy_mod_picking = { workspace = true }
+# bevy_mod_picking = { workspace = true }
 impl-trait-for-tuples = "0.2.2"
 smallvec = "1.13.2"
 
@@ -42,7 +42,3 @@ bevy_reactor_inspect = { workspace = true }
 # bevy_picking_backdrop = { path = "crates/bevy_picking_backdrop" }
 bevy-inspector-egui = "0.26.0"
 pulldown-cmark = "0.12.2"
-
-[patch.crates-io]
-bevy = { git = "https://github.com/bevyengine/bevy.git", version = "0.15.0-dev" }
-bevy_ecs = { git = "https://github.com/bevyengine/bevy.git", version = "0.15.0-dev" }

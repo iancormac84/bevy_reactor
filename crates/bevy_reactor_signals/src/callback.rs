@@ -37,7 +37,7 @@ pub trait AnyCallback: 'static {
 impl<P: 'static> AnyCallback for Callback<P> {
     fn remove(&self, world: &mut World) {
         // println!("Removing callback");
-        world.remove_system(self.id).unwrap();
+        world.unregister_system(self.id).unwrap();
     }
 }
 

@@ -6,7 +6,7 @@ publish = false
 
 [dependencies]
 bevy = { workspace = true }
-bevy_mod_picking = { workspace = true }
+# bevy_mod_picking = { workspace = true }
 bevy_mod_stylebuilder = { workspace = true }
 bevy_reactor_signals = { workspace = true }
 bevy_reactor = { path = "../.." }

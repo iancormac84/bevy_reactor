@@ -6,7 +6,7 @@ publish = false
 
 [dependencies]
 bevy = { workspace = true }
-bevy_mod_picking = { workspace = true }
+# bevy_mod_picking = { workspace = true }
 # bevy_app = { git = "https://github.com/bevyengine/bevy.git" }
 # bevy_ecs = { git = "https://github.com/bevyengine/bevy.git" }
 # bevy_reflect = { git = "https://github.com/bevyengine/bevy.git" }

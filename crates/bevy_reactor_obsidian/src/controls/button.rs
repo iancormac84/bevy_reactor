@@ -11,11 +11,9 @@ use crate::{
     tab_navigation::{AutoFocus, TabIndex},
     typography,
 };
+use accesskit::{Node as Accessible, Role};
 use bevy::{
-    a11y::{
-        accesskit::{NodeBuilder, Role},
-        AccessibilityNode,
-    },
+    a11y::AccessibilityNode,
     color::Luminance,
     prelude::*,
     ui,
@@ -253,7 +251,7 @@ impl UiTemplate for Button {
                 TabIndex(self.tab_index),
                 ButtonPressed(false),
                 ButtonState { on_click },
-                AccessibilityNode::from(NodeBuilder::new(Role::Button)),
+                AccessibilityNode::from(Accessible::new(Role::Button)),
             ))
             .insert_if(self.autofocus, || AutoFocus)
             .create_children(|builder| {

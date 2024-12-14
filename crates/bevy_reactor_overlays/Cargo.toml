@@ -8,5 +8,5 @@ publish = false
 bevy = { workspace = true }
 bevy_reactor_signals = { workspace = true }
 # bevy = "0.13.1"
-bevy_mod_picking = { workspace = true }
+# bevy_mod_picking = { workspace = true }
 bevy_reactor = { path = "../.." }

@@ -1,7 +1,7 @@
 use bevy::{
     prelude::*,
-    render::texture::Image,
-    ui::{self, UiImage},
+    image::Image,
+    ui::{self, widget::ImageNode},
 };
 
 use super::style_builder::StyleBuilder;
@@ -39,27 +39,27 @@ impl<'a, 'w> StyleBuilderBackground for StyleBuilder<'a, 'w> {
         flip_x: bool,
         flip_y: bool,
     ) -> &mut Self {
-        let texture = match path.into() {
+        let image = match path.into() {
             MaybeHandleOrPath::Handle(h) => Some(h),
             MaybeHandleOrPath::Path(p) => Some(self.load_asset::<Image>(p)),
             MaybeHandleOrPath::None => None,
         };
-        match (texture, self.target.get_mut::<UiImage>()) {
+        match (image, self.target.get_mut::<ImageNode>()) {
             (Some(texture), Some(mut uii)) => {
-                uii.texture = texture;
+                uii.image = texture;
                 uii.flip_x = flip_x;
                 uii.flip_y = flip_y;
             }
-            (Some(texture), None) => {
-                self.target.insert(UiImage {
-                    texture,
+            (Some(image), None) => {
+                self.target.insert(ImageNode {
+                    image,
                     flip_x,
                     flip_y,
                     ..default()
                 });
             }
             (None, Some(_)) => {
-                self.target.remove::<UiImage>();
+                self.target.remove::<ImageNode>();
             }
             _ => (),
         };
@@ -76,15 +76,15 @@ impl<'a, 'w> StyleBuilderBackground for StyleBuilder<'a, 'w> {
     }
 
     fn background_image_color(&mut self, color: impl ColorParam) -> &mut Self {
-        match (color.to_val(), self.target.get_mut::<UiImage>()) {
+        match (color.to_val(), self.target.get_mut::<ImageNode>()) {
             (Some(color), Some(mut uii)) => {
                 uii.color = color;
             }
             (Some(color), None) => {
-                self.target.insert(UiImage { color, ..default() });
+                self.target.insert(ImageNode { color, ..default() });
             }
             (None, Some(_)) => {
-                self.target.remove::<UiImage>();
+                self.target.remove::<ImageNode>();
             }
             _ => (),
         };

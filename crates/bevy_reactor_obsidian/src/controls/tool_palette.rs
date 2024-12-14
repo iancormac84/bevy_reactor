@@ -1,11 +1,9 @@
 use std::sync::Arc;
 
 use crate::{prelude::RoundedCorners, size::Size};
+use accesskit::{Node as Accessible, Role};
 use bevy::{
-    a11y::{
-        accesskit::{NodeBuilder, Role},
-        AccessibilityNode,
-    },
+    a11y::AccessibilityNode,
     prelude::*,
     ui,
 };
@@ -102,7 +100,7 @@ impl UiTemplate for ToolPalette {
                 self.style.clone(),
             ))
             .insert(ToolPaletteContext { size: self.size })
-            .insert(AccessibilityNode::from(NodeBuilder::new(Role::Group)))
+            .insert(AccessibilityNode::from(Accessible::new(Role::Group)))
             .create_children(|builder| {
                 (self.children.as_ref())(builder);
             });
